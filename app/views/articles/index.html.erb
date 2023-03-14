@@ -14,8 +14,9 @@
             <td><%= article.id %> </td>
             <td><%= article.name %> </td>
             <td><%= article.body %> </td>
-            <td><%= link_to 'Edit', edit_article_path(article)%> /
-            <%= link_to 'Delete', delete_article_path(article), method: "delete", data: {confirm: "are you sure?"} %>
+            <td>
+            <%= link_to 'Edit', edit_article_path(article)%> /
+            <%= button_to 'Delete', delete_article_path(article), method: "delete", data: {confirm: "are you sure?"} %>
             </td>
             </tr>
         <% end %>

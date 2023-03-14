@@ -28,8 +28,7 @@ class ArticlesController < ApplicationController
     def update
         @article = Article.find(params["id"])
         if @article.update(article_params)
-            flash[:notice] = "Successfully updated database!"
-            redirect_to articles_path
+            redirect_to articles_path, :notice => "Successfully updated database!"
         else
             render :edit, status: :unprocessable_entity
         end
