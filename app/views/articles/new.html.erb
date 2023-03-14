@@ -1,27 +1,26 @@
-<%= form_with scope: :article, url: create_article_path, local: true do |f| %>
+<%= form_with class: "bg-gray-200 w-1/4 flex flex-col justify-center p-6", scope: :article, url: create_article_path, local: true do |f| %>
+    <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Insert name", class: "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </p>
+
+    <p>
+        <%= f.label :body %>
+        <%= f.text_field :body, placeholder: "min of 5 characters", class: "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </p>
+
+    <p>
+        <%= f.submit "Add", class: "cursor-pointer mt-2 w-full text-center py-3 rounded bg-green-500 hover:bg-green-600 text-gray-800 hover:bg-green-dark focus:outline-none" %>
+    </p>
+    <%= link_to 'Return', articles_path, class: "cursor-pointer mt-2 w-full text-center py-3 rounded bg-gray-300 hover:bg-gray-400 text-gray-800 hover:bg-green-dark focus:outline-none" %>
 
     <p>
         <% if @article.errors.any? %>
-            <ul>
+            <ul class="text-red-500">
                 <% @article.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
+                    <p><%= message %></p>
                 <% end %>
             </ul>
         <% end %>
     </p>
-
-    <p>
-        <%= f.label :name %><br/>
-        <%= f.text_field :name %>
-    </p>
-
-    <p>
-        <%= f.label :body %><br/>
-        <%= f.text_field :body %>
-    </p>
-
-    <p>
-        <%= f.submit "Add" %>
-    </p>
-    <%= link_to 'Return', articles_path %>
 <% end %>

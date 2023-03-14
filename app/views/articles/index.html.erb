@@ -1,26 +1,27 @@
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Body</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @articles.each do |article| %>
-            <tr>
-            <td><%= article.id %> </td>
-            <td><%= article.name %> </td>
-            <td><%= article.body %> </td>
-            <td>
-            <%= link_to 'Edit', edit_article_path(article)%> /
-            <%= button_to 'Delete', delete_article_path(article), method: "delete", data: {confirm: "are you sure?"} %>
-            </td>
+<div class="w-full relative overflow-x-auto flex flex-col items-center">
+    <%= link_to 'New Article', new_article_path, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-5 py-2.5" %>
+    <table class="w-1/2 text-sm text-center text-gray-500 mt-2">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
+                <th scope="col" class="px-6 py-3">ID</th>
+                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">Body</th>
+                <th scope="col" class="px-6 py-3">Actions</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
 
-<%= link_to 'New Article', new_article_path %>
+        <tbody>
+            <% @articles.each do |article| %>
+                <tr class="dark:bg-gray-200 text-gray-900">
+                <td class="px-4 py-2"><%= article.id %> </td>
+                <td class="px-4 py-2"><%= article.name %> </td>
+                <td class="px-4 py-2"><%= article.body %> </td>
+                <td class="px-4 py-2 flex justify-around">
+                <%= link_to 'Edit', edit_article_path(article), class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %> 
+                <%= button_to 'Delete', delete_article_path(article), method: :delete, data: { turbo_confirm: "Delete Article?" }, class: "bg-blue-500 hover:bg-blue-600 text-white focus:outline-none rounded-lg font-medium text-center px-2 py-1" %>
+                </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
